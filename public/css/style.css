@@ -6,3 +6,11 @@ html, body {
 .h100 {
     height: 100vh;
 }
+
+main {
+    overflow-y: scroll;
+}
+
+main::-webkit-scrollbar {
+    display: none;
+}
