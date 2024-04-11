@@ -21,9 +21,9 @@
 <div class="row" style="margin: 0">
     <div class="col hide-on-med-and-down l3 orange white-text h100 valign-wrapper fixed" style="padding: 2vw; box-sizing: border-box">
         <div class="right-align" style="width: 100%">
-            <h1 style="margin-top: 0; font-weight: bold">Hello!</h1>
-            <h4>This is my fancy blog created with <a href="https://materializecss.com" target="_blank">materialize</a>!</h4>
-            <h6>My name is Michał, you can visit my social media in the floating button.</h6>
+            <h1 style="margin-top: 0">Hello!</h1>
+            <h4 class="light">This is my fancy blog created with <a href="https://materializecss.com" target="_blank">materialize</a>!</h4>
+            <h6 class="light">My name is Michał, you can visit my social media in the floating button.</h6>
         </div>
     </div>
     <div class="col s12 l9 offset-l3 main" style="padding: 0; overflow-x: hidden" >

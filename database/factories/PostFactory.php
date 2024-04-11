@@ -20,6 +20,7 @@ class PostFactory extends Factory
             "title" => fake()->sentence(),
             "content" => fake()->text(1000),
             "published" => fake()->date(),
+            "image" => fake()->imageUrl(),
             "user_id" => 7
         ];
     }

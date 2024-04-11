@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
             TagSeeder::class
         ]);
 
-        for ($i=1; $i < 5; $i++) {
+        for ($i=1; $i <= 5; $i++) {
             $rand1 = random_int(1, Tag::count());
             $rand2 = $rand1;
             while ($rand2 == $rand1) $rand2 = random_int(1, Tag::count());

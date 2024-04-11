@@ -21,7 +21,7 @@
         </div>
     </div>
     <div class="footer-copyright">
-        <div class="container center">
+        <div class="container">
             © {{ date("Y") }} Fancy Blog
         </div>
     </div>
