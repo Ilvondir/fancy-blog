@@ -1,5 +1,5 @@
 <div class="fixed-action-btn">
-    <a class="btn-floating btn-large pulse red">
+    <a class="btn-floating btn-large pulse orange">
         <i class="fa-solid fa-user"></i>
     </a>
     <ul>

@@ -5,13 +5,13 @@
     <div class="nav-content">
       <ul class="tabs tabs-transparent">
 
-        <li class="tab @if ( str_contains(request()->path(), "home") ) active @endif"><a href="{{ route("home") }}" class="@if ( str_contains(request()->path(), "home") ) active @endif">Home</a></li>
+        <li class="tab @if ( str_contains(request()->path(), "home") ) active @endif"><a href="{{ route("home") }}" class="@if ( str_contains(request()->path(), "home") ) active @endif"><i class="fa-solid fa-house" style="font-size: 120%; margin-right: 3px"></i> Home</a></li>
 
-        <li class="tab @if ( str_contains(request()->path(), "posts") ) active @endif"><a href="#" class="@if ( str_contains(request()->path(), "posts") ) active @endif">Posts</a></li>
+        <li class="tab @if ( str_contains(request()->path(), "posts") ) active @endif"><a href="#" class="@if ( str_contains(request()->path(), "posts") ) active @endif"><i class="fa-solid fa-newspaper" style="font-size: 120%; margin-right: 3px"></i> Posts</a></li>
 
-        <li class="tab @if ( str_contains(request()->path(), "tags") ) active @endif"><a href="#" class="@if ( str_contains(request()->path(), "tags") ) active @endif">Tags</a></li>
+        <li class="tab @if ( str_contains(request()->path(), "tags") ) active @endif"><a href="#" class="@if ( str_contains(request()->path(), "tags") ) active @endif"><i class="fa-solid fa-hashtag" style="font-size: 120%; margin-right: 3px"></i> Tags</a></li>
 
-        <li class="tab @if ( str_contains(request()->path(), "login") || str_contains(request()->path(), "register") ) active @endif"><a href="#" class="@if ( str_contains(request()->path(), "login")  || str_contains(request()->path(), "register") ) active @endif">Login</a></li>
+        <li class="tab @if ( str_contains(request()->path(), "login") || str_contains(request()->path(), "register") ) active @endif"><a href="#" class="@if ( str_contains(request()->path(), "login")  || str_contains(request()->path(), "register") ) active @endif"><i class="fa-solid fa-door-open" style="font-size: 120%; margin-right: 3px"></i> Login</a></li>
       </ul>
     </div>
     

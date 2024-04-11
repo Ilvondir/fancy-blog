@@ -1,16 +1,7 @@
-html, body {
-    height: 100vh;
-    overflow: hidden;
-}
-
 .h100 {
     height: 100vh;
 }
 
-main {
-    overflow-y: scroll;
-}
-
-main::-webkit-scrollbar {
-    display: none;
+.fixed {
+    position: fixed;
 }

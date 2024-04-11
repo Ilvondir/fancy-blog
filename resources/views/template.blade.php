@@ -13,19 +13,20 @@
     <script src="https://kit.fontawesome.com/d4fa1bfac0.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ asset("css/style.css") }}"> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" defer></script>
-    <script src="{{ asset("js/floatingButton.js") }}" defer></script>
+    <script src="{{ asset("js/floatingButton.js") }}" defer></script> 
+    <script src="{{ asset("js/parallax.js") }}" defer></script> 
 </head>
 
 <body>
-<div class="row">
-    <div class="col hide-on-med-and-down l3 orange white-text h100 valign-wrapper" style="padding: 2vw">
+<div class="row" style="margin: 0">
+    <div class="col hide-on-med-and-down l3 orange white-text h100 valign-wrapper fixed" style="padding: 2vw; box-sizing: border-box">
         <div class="right-align" style="width: 100%">
             <h1 style="margin-top: 0; font-weight: bold">Hello!</h1>
             <h4>This is my fancy blog created with <a href="https://materializecss.com" target="_blank">materialize</a>!</h4>
             <h6>My name is Michał, you can visit my social media in the floating button.</h6>
         </div>
     </div>
-    <div class="col s12 l9" style="padding:0">
+    <div class="col s12 l9 offset-l3 main" style="padding: 0; overflow-x: hidden" >
 
         @include("components/navbar")
 
