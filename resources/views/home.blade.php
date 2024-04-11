@@ -93,7 +93,8 @@
                 <div class="col s12 center">
                   <h4>Our goals</h4>
                   <p class="light center">
-                    We specialize in delivering inspiring and accessible programming and technology education. Our content is crafted for everyone, from beginners to advanced learners. Whether you're exploring the basics of coding or diving into advanced topics like machine learning and cybersecurity, our goal is to provide valuable resources and insights. Join our community and embark on a journey of continuous learning and growth in the ever-evolving tech landscape!
+                    We specialize in delivering inspiring and accessible programming and technology education. Our content is crafted for everyone, from beginners to advanced learners. Whether you're exploring the basics of coding or diving into advanced topics like machine learning and cybersecurity, our goal is to provide valuable resources and insights. Join our community and embark on a journey of continuous learning and growth in the ever-evolving tech landscape!<br><br>
+                    Currently we have {{$posts}} articles and {{$tags}} tags.
                   </p>
                 </div>
               </div>
