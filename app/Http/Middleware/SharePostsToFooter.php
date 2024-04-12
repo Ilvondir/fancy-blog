@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\Post;
+use App\Models\Article;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,7 +16,7 @@ class SharePostsToFooter
      */
     public function handle(Request $request, Closure $next): Response
     {
-        view()->share("latest", Post::orderBy("published", "DESC")->limit(4)->get());
+        view()->share("latest", Article::orderBy("published", "DESC")->limit(4)->get());
         return $next($request);
     }
 }

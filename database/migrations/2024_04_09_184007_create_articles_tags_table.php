@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('posts_tags', function (Blueprint $table) {
+        Schema::create('articles_tags', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger("post_id");
+            $table->unsignedBigInteger("article_id");
             $table->unsignedBigInteger("tag_id");
-            $table->foreign("post_id")->references("id")->on("posts");
+            $table->foreign("article_id")->references("id")->on("articles");
             $table->foreign("tag_id")->references("id")->on("tags");
         });
     }
@@ -25,10 +25,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table("posts_tags", function ($table) {
-            $table->dropForeign("posts_tags_post_id_foreign");
-            $table->dropForeign("posts_tags_tag_id_foreign");
+        Schema::table("articles_tags", function ($table) {
+            $table->dropForeign("articles_tags_article_id_foreign");
+            $table->dropForeign("articles_tags_tag_id_foreign");
         });
-        Schema::dropIfExists('posts_tags');
+        Schema::dropIfExists('articles_tags');
     }
 };

@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\PostController;
-use App\Models\Post;
+use App\Http\Controllers\ArticleController;
+use App\Models\Article;
 use App\Models\Tag;
 use Illuminate\Support\Facades\Route;
 
@@ -10,7 +10,7 @@ Route::get('/', function () {
 });
 
 Route::get("/home", function () {
-    return view("home", ["posts" => Post::count(), "tags" => Tag::count()]);
+    return view("home", ["posts" => Article::count(), "tags" => Tag::count()]);
 })->name("home");
 
-Route::get("/posts", [PostController::class, "index"])->name("index.posts");
+Route::get("/posts", [ArticleController::class, "index"])->name("index.posts");

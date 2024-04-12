@@ -10,7 +10,7 @@
 </p>
 @foreach ($posts as $p)
 <div class="row" style="margin: 0">
-    <div class="col s12 l10">
+    <div class="col s12">
     <div class="card horizontal">
         <div class="card-image" style="background-image: url({{$p->image}}); width: 35%; background-position: center; background-size: cover">
         </div>
@@ -27,6 +27,7 @@
             <div class="card-action light">
                 <i class="fa-calendar-days fa-regular blue-text" style="margin-right: 0.4vmax; font-size: 125%"></i>{{ $p->published }}
                 <i class="fa-solid fa-user-pen blue-text" style="margin: 0 0.4vmax 0 1.5vmax; font-size: 125%"></i> {{ $p->user->login }}
+                <i class="fa-solid fa-comment blue-text" style="margin: 0 0.4vmax 0 1.5vmax; font-size: 125%"></i> {{ count($p->comments) }}
             </div>
         </div>
     </div>
