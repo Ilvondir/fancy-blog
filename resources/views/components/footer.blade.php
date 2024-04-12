@@ -11,9 +11,9 @@
             <div class="col l4 offset-l2 s12">
                 <h5 class="white-text">Latest</h5>
                 <ul>
-                    @foreach ($latest as $p)
+                    @foreach ($latest as $a)
                         <li style="margin-bottom: 8px">
-                            <a class="grey-text text-lighten-3" href="#!">{{$p->title}}</a>
+                            <a class="grey-text text-lighten-3" href="{{ route("show.articles", ["article" => $a->id]) }}">{{ $a->title }}</a>
                         </li>
                     @endforeach
                 </ul>

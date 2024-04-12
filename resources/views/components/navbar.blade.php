@@ -7,7 +7,7 @@
 
         <li class="tab @if ( str_contains(request()->path(), "home") ) active @endif"><a href="{{ route("home") }}" class="@if ( str_contains(request()->path(), "home") ) active @endif"><i class="fa-solid fa-house" style="font-size: 120%; margin-right: 3px"></i> Home</a></li>
 
-        <li class="tab @if ( str_contains(request()->path(), "posts") ) active @endif"><a href="{{ route("index.posts") }}" class="@if ( str_contains(request()->path(), "posts") ) active @endif"><i class="fa-solid fa-newspaper" style="font-size: 120%; margin-right: 3px"></i> Posts</a></li>
+        <li class="tab @if ( str_contains(request()->path(), "articles") ) active @endif"><a href="{{ route("index.articles") }}" class="@if ( str_contains(request()->path(), "articles") ) active @endif"><i class="fa-solid fa-newspaper" style="font-size: 120%; margin-right: 3px"></i> Articles</a></li>
 
         <li class="tab @if ( str_contains(request()->path(), "tags") ) active @endif"><a href="#" class="@if ( str_contains(request()->path(), "tags") ) active @endif"><i class="fa-solid fa-hashtag" style="font-size: 120%; margin-right: 3px"></i> Tags</a></li>
 

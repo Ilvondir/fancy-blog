@@ -10,7 +10,8 @@ Route::get('/', function () {
 });
 
 Route::get("/home", function () {
-    return view("home", ["posts" => Article::count(), "tags" => Tag::count()]);
+    return view("home", ["articles" => Article::count(), "tags" => Tag::count()]);
 })->name("home");
 
-Route::get("/posts", [ArticleController::class, "index"])->name("index.posts");
+Route::get("/articles", [ArticleController::class, "index"])->name("index.articles");
+Route::get("/articles/{article}", [ArticleController::class, "show"])->name("show.articles");
