@@ -30,6 +30,8 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
-        //
+        $article = $comment->article_id;
+        $comment->delete();
+        return redirect()->route("show.articles", ["article" => $article]);
     }
 }

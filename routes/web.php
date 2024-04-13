@@ -28,6 +28,7 @@ Route::controller(ArticleController::class)->group(function () {
 
 Route::controller(CommentController::class)->group(function () {
     Route::post('/articles/{article}/comments', 'store')->name("store.comments");
+    Route::delete('comments/{comment}', 'destroy')->name("destroy.comments");
 });
 
 Route::controller(TagController::class)->group(function () {

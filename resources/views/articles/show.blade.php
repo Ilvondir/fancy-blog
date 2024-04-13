@@ -4,6 +4,13 @@
 
 @section("content")
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.modal');
+    M.Modal.init(elems, {});
+});
+</script>
+
 <div style="background-image: url({{ $article->image }}); height: 500px; background-position: center"></div>
 
 
@@ -81,9 +88,35 @@
             <div class="card horizontal">
                 <div class="card-stacked">
                     <div class="card-content">
+
+                        @auth
+                            @if (Auth::user()->id == $c->user_id)
+                                <div class="right">
+                                    <a style="letter-spacing: 0.25vmax" class="waves-effect waves-light modal-trigger red-text" href="#delete-modal">DELETE</a>
+                                </div>
+
+                                <div id="delete-modal" class="modal">
+                                    <div class="modal-content">
+                                        <h4>Comment delete</h4>
+                                        <p>Are you sure you want to delete this comment?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <form method="POST" action="{{ route("destroy.comments", ["comment" => $c->id]) }}">
+                                            @csrf
+                                            @method("DELETE")
+                                            <button type="submit" class="red white-text waves-effect waves-light btn">
+                                                <i class="fa-solid fa-trash" style="font-size:110%"></i> Delete
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            @endif
+                        @endauth
+                                              
+
                         <p style="font-weight: bold">{{ $c->user->login }}</p>
                         <p style="margin-bottom: 1.1vmax" class="light">{{ date('d.m.Y', strtotime($c->written)) }}</p>
-                        <p>{{ $c->content }}</p>
+                        <p style="white-space: pre-wrap">{{ $c->content }}</p>
                     </div>
                 </div>
             </div>
