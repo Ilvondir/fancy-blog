@@ -12,8 +12,8 @@ class Comment extends Model
     public $guarded = [];
     public $timestamps = false;
 
-    public function post() {
-        return $this->belongsTo(Post::class);
+    public function article() {
+        return $this->belongsTo(Article::class);
     }
 
     public function user() {

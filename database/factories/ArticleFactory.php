@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Post>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Article>
  */
-class PostFactory extends Factory
+class ArticleFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -20,6 +20,7 @@ class PostFactory extends Factory
             "title" => fake()->sentence(),
             "content" => fake()->text(1000),
             "published" => fake()->date(),
+            "image" => fake()->imageUrl(),
             "user_id" => 7
         ];
     }

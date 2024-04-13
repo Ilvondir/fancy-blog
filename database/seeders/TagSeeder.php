@@ -18,7 +18,7 @@ class TagSeeder extends Seeder
             ["name" => "Java", "color" => "#FA9C1B"],
             ["name" => "Databases", "color" => "#808080"],
             ["name" => "AI", "color" => "#48CEA4"],
-            ["name" => "Machine Learning", "color" => "#68EEC4"],
+            ["name" => "Deep Learning", "color" => "#68EEC4"],
             ["name" => "Math", "color" => "#A020F0"],
         ]);
     }

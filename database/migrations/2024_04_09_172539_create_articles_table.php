@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('articles', function (Blueprint $table) {
             $table->id();
             $table->string("title");
             $table->text("content");
             $table->date("published");
+            $table->string("image");
             $table->unsignedBigInteger("user_id")->nullable();
             $table->foreign("user_id")->references("id")->on("users")->nullOnDelete();
         });
@@ -26,9 +27,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table("posts", function ($table) {
-            $table->dropForeign("posts_user_id_foreign");
+        Schema::table("articles", function ($table) {
+            $table->dropForeign("articles_user_id_foreign");
         });
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('articles');
     }
 };
