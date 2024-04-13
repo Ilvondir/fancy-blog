@@ -17,7 +17,7 @@
                         
                             @csrf
                             <div class="input-field col s12">
-                                <input id="email" type="email" class="validate" value="{{ old("email") }}" name="email">
+                                <input id="email" type="email" class="validate" name="email">
                                 <label for="email">Email</label>
                             </div>
 
