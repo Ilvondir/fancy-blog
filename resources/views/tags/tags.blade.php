@@ -10,20 +10,26 @@
 </p>
 @for ($i=0; $i < count($tags); $i++)
     @if ($i % 4 == 0)
-        <div class="row">
+        <div class="row" style="margin: 0">
     @endif
 
-    <div class="col s12 m3 center">
-        <div class="col s12">
-            <div class="card" style="background-color: {{ $tags[$i]->color }}; font-size:110%">
-                <div class="card-content">
-                    <p>
-                        {{ $tags[$i]->name }} ({{ count($tags[$i]->articles) }})
-                    </p>
+    @php
+        $queryString = http_build_query(["tag" => $tags[$i]->name])
+    @endphp
+
+    <a href="{{ route("index.articles")."?".$queryString }}">
+        <div class="col s12 m3 center black-text">
+            <div class="col s12">
+                <div class="card" style="background-color: {{ $tags[$i]->color }}; font-size:110%">
+                    <div class="card-content">
+                        <p>
+                            {{ $tags[$i]->name }} ({{ count($tags[$i]->articles) }})
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </a>
 
     @if ($i % 4 == 3 || $i == count($tags)-1)
         </div>

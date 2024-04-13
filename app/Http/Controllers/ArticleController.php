@@ -11,9 +11,22 @@ class ArticleController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view("articles.articles", ["articles" => Article::orderBy("published", "DESC")->with(["user", "tags", "comments"])->get()]);
+        $articles = Article::orderBy("published", "DESC")->with(["user", "tags", "comments"])->get();
+
+        if ($request->input("tag")) {
+            $tag = $request->input("tag");
+
+            $filtered = [];
+            foreach ($articles as $a) {
+                if ($a->tags->contains("name", $tag)) array_push($filtered, $a);
+            }
+
+            return view("articles.articles", ["articles" => $filtered]);
+        }
+        else 
+            return view("articles.articles", ["articles" => $articles]);
     }
 
     /**
