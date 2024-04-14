@@ -4,6 +4,16 @@
 
 @section("content")
 
+@can('create', App\Models\Tag::class)
+    
+    <div class="right">
+        <a link="#">
+            <button  style="margin: 1.4vmax 1vmax 0 0" class="btn waves-effect waves-light blue">Create new tag</button>
+        </a>
+    </div>
+
+@endcan
+
 <h2 style="padding: 0 0 0 1vmax">Tags</h2>
 <p class="light" style="padding: 0 0 0 1vmax">
     Explore our curated selection of tags, each serving as a gateway to a realm of specialized content. From cutting-edge technology to timeless lifestyle tips, our tags are thoughtfully arranged to help you navigate through our diverse articles. Whether you're seeking knowledge, inspiration, or practical advice, our tags connect you to the stories that matter most to you. Dive into topics you are passionate about and discover the depth of information that awaits. Happy exploring!

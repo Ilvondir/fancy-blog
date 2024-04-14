@@ -57,19 +57,16 @@ document.addEventListener('DOMContentLoaded', function() {
         
         <div class="row">
             <div class="col s12">
-                @guest
-                    <h6><a href="{{ route("login") }}">Login</a> to add comments.</h6>
-                @endguest
 
-                @auth
-                    
+                @can("create", App\Models\Comment::class)
+
                     <form method="POST" action="{{ route("store.comments", ["article" => $article->id]) }}">
 
                         <div class="row right-align">
                             @csrf
                             <div class="input-field col s12">
-                                  <textarea id="content" name="content" class="materialize-textarea" rows="5"></textarea>
-                                  <label for="content">Comment</label>
+                                <textarea id="content" name="content" class="materialize-textarea" rows="5"></textarea>
+                                <label for="content">Comment</label>
                             </div>
 
                             <button type="submit" class="blue white-text waves-effect waves-light btn">
@@ -79,7 +76,12 @@ document.addEventListener('DOMContentLoaded', function() {
                         
                     </form>
 
-                @endauth
+                @else
+
+                    <h6><a href="{{ route("login") }}">Login</a> to add comments.</h6>
+
+                @endcan
+                    
             </div>
         </div>
 
@@ -89,28 +91,26 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="card-stacked">
                     <div class="card-content">
 
-                        @auth
-                            @if (Auth::user()->id == $c->user_id)
-                                <div class="right">
-                                    <a style="letter-spacing: 0.25vmax" class="waves-effect waves-light modal-trigger red-text" href="#delete-modal">DELETE</a>
-                                </div>
+                        @can('delete', $c)
+                            <div class="right">
+                                <a style="letter-spacing: 0.25vmax" class="waves-effect waves-light modal-trigger red-text" href="#delete-modal">DELETE</a>
+                            </div>
 
-                                <div id="delete-modal" class="modal">
-                                    <div class="modal-content">
-                                        <h4>Comment delete</h4>
-                                        <p>Are you sure you want to delete this comment?</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <form method="POST" action="{{ route("destroy.comments", ["comment" => $c->id]) }}">
-                                            @csrf
-                                            @method("DELETE")
-                                            <button type="submit" class="red white-text waves-effect waves-light btn">
-                                                <i class="fa-solid fa-trash" style="font-size:110%"></i> Delete
-                                            </button>
-                                        </form>
-                                    </div>
+                            <div id="delete-modal" class="modal">
+                                <div class="modal-content">
+                                    <h4>Comment delete</h4>
+                                    <p>Are you sure you want to delete this comment?</p>
                                 </div>
-                            @endif
+                                <div class="modal-footer">
+                                    <form method="POST" action="{{ route("destroy.comments", ["comment" => $c->id]) }}">
+                                        @csrf
+                                        @method("DELETE")
+                                        <button type="submit" class="red white-text waves-effect waves-light btn">
+                                            <i class="fa-solid fa-trash" style="font-size:110%"></i> Delete
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
                         @endauth
                                               
 

@@ -6,6 +6,7 @@ use App\Models\Comment;
 use App\Models\Article;
 use App\Http\Requests\StoreCommentRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class CommentController extends Controller
 {
@@ -14,6 +15,8 @@ class CommentController extends Controller
      */
     public function store(StoreCommentRequest $request, Article $article)
     {
+        Gate::authorize("create", Comment::class);
+
         $article->comments()->create(
             $request->validated() +
             [
@@ -30,6 +33,8 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
+        Gate::authorize("delete", $comment);
+        
         $article = $comment->article_id;
         $comment->delete();
         return redirect()->route("show.articles", ["article" => $article]);
