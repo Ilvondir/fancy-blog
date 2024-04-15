@@ -25,7 +25,17 @@
         @else
             <li class="tab">
                 <a href="#" id="logout">
-                    <i class="fa-solid fa-door-open" style="font-size: 120%; margin-right: 3px"></i> Logout
+                    <i class="fa-solid fa-door-open" style="font-size: 120%; margin-right: 3px"></i>
+
+                    @php 
+                        $string = "";
+                        if (Auth::user()->first_name) $string .= Auth::user()->first_name;
+                        if (Auth::user()->last_name) $string .= " " . Auth::user()->last_name;
+                        if (Auth::user()->first_name || Auth::user()->last_name) $string .= ",";
+
+                    @endphp
+
+                    {{$string}} Logout
                 </a>
             </li>
 

@@ -1,38 +1,49 @@
 @extends("template")
 
-@section('title', "Login")
+@section("title", "Register")
 
 @section("content")
 
 <div class="row" style="margin-bottom: 0">
     <div class="col s12 l6 offset-l3">
-
-        @if (request()->boolean("registered"))
-
-            <div class="card center green-text" style="padding: 1.5vmax 0; font-size:140%">
-                Now you can login.
-            </div>
-
-        @endif
-
-        <form method="POST" action="{{ route("authenticate") }}">
+        <form method="POST" action="{{ route("store.users") }}">
             <div class="card">
                 <div class="card-content">
                     <div class="card-title">
-                        Login
+                        Register
                     </div>
                     <p>
                         <div class='row' style="margin-bottom: 0">
                         
                             @csrf
                             <div class="input-field col s12">
-                                <input id="email" type="email" class="validate" name="email">
+                                <input id="first_name" type="text" class="validate" name="first_name" value="{{ old("first_name") }}">
+                                <label for="first_name">First name</label>
+                            </div>
+
+                            <div class="input-field col s12">
+                                <input id="last_name" type="text" class="validate" name="last_name" value="{{ old("last_name") }}">
+                                <label for="last_name">Last name</label>
+                            </div>
+
+                            <div class="input-field col s12">
+                                <input id="login" type="text" class="validate" name="login" value="{{ old("login") }}">
+                                <label for="login">Login</label>
+                            </div>
+
+                            <div class="input-field col s12">
+                                <input id="email" type="email" class="validate" name="email" value="{{ old("email") }}">
                                 <label for="email">Email</label>
                             </div>
 
                             <div class="input-field col s12">
                                 <input id="password" type="password" class="validate" name="password">
                                 <label for="password">Password</label>
+                            </div>
+
+                            <div class="input-field col s12">
+                                <input id="password_confirmation" type="password" class="validate" name="password_confirmation">
+                                <label for="password_confirmation">Password confirmation</label>
                             </div>
 
                         </div>
@@ -52,13 +63,13 @@
                 <div class="card-action">
 
                     <div class="right" style='margin-top: .5vmax'>
-                        <a href="{{ route("register") }}" class="blue-text">
-                            Register
+                        <a href="{{ route("login") }}" class="blue-text">
+                            Login
                         </a>
                     </div>
                     
                     <button type="submit" class="blue white-text waves-effect waves-light btn">
-                        Login
+                        Register
                     </button>
 
                 </div>
@@ -66,5 +77,12 @@
         </form>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    M.FormSelect.init(elems, options);
+});
+</script>
 
 @endsection

@@ -1,38 +1,29 @@
 @extends("template")
 
-@section('title', "Login")
+@section("title", "Create tag")
 
 @section("content")
 
 <div class="row" style="margin-bottom: 0">
     <div class="col s12 l6 offset-l3">
-
-        @if (request()->boolean("registered"))
-
-            <div class="card center green-text" style="padding: 1.5vmax 0; font-size:140%">
-                Now you can login.
-            </div>
-
-        @endif
-
-        <form method="POST" action="{{ route("authenticate") }}">
+        <form method="POST" action="{{ route("store.tags") }}">
             <div class="card">
                 <div class="card-content">
                     <div class="card-title">
-                        Login
+                        Create new tag
                     </div>
                     <p>
                         <div class='row' style="margin-bottom: 0">
                         
                             @csrf
                             <div class="input-field col s12">
-                                <input id="email" type="email" class="validate" name="email">
-                                <label for="email">Email</label>
+                                <input id="name" type="text" class="validate" name="name">
+                                <label for="name">Name</label>
                             </div>
 
-                            <div class="input-field col s12">
-                                <input id="password" type="password" class="validate" name="password">
-                                <label for="password">Password</label>
+                            <div class="col s12">
+                                <label for="color">Color</label><br>
+                                <input id="color" type="color" class="validate col s12 white" style="border: 0; height: 5vmax" name="color">
                             </div>
 
                         </div>
@@ -50,15 +41,9 @@
                     </p>
                 </div>
                 <div class="card-action">
-
-                    <div class="right" style='margin-top: .5vmax'>
-                        <a href="{{ route("register") }}" class="blue-text">
-                            Register
-                        </a>
-                    </div>
                     
                     <button type="submit" class="blue white-text waves-effect waves-light btn">
-                        Login
+                        Create
                     </button>
 
                 </div>

@@ -8,7 +8,8 @@
 <p class="light" style="padding: 0 0 0 1vmax">
     Dive into our latest collection of articles, each crafted with passion and meticulous attention to detail. Here, we explore a wide array of topics, delivering expert insights and innovative ideas designed to enlighten and inspire. Our commitment is to provide you with thoughtful content that not only informs but also enriches your perspective. Enjoy the read and discover the dedication behind each post.
 </p>
-@foreach ($articles as $a)
+
+@forelse ($articles as $a)
 <a href={{ route("show.articles", ["article" => $a->id]) }}>
 <div class="row" style="margin: 0">
     <div class="col s12">
@@ -36,6 +37,12 @@
 </div>
 </a>
 
-@endforeach
+@empty
+
+<div style="padding: 0 0 1vmax 1vmax" class="light">
+    We don't have any articles yet.
+</div>
+
+@endforelse
 
 @endsection
