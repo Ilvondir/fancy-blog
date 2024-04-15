@@ -33,4 +33,7 @@ Route::controller(CommentController::class)->group(function () {
 
 Route::controller(TagController::class)->group(function () {
     Route::get('/tags', 'index')->name("index.tags");
+    Route::get('/tags/create', "create")->name("create.tags");
+    Route::post('/tags/create', "store")->name("store.tags");
+    Route::delete("/tags/{tag}", "destroy")->name("destroy.tags");
 });

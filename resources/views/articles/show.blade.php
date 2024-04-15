@@ -4,13 +4,6 @@
 
 @section("content")
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.modal');
-    M.Modal.init(elems, {});
-});
-</script>
-
 <div style="background-image: url({{ $article->image }}); height: 500px; background-position: center"></div>
 
 
@@ -93,10 +86,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
                         @can('delete', $c)
                             <div class="right">
-                                <a style="letter-spacing: 0.25vmax" class="waves-effect waves-light modal-trigger red-text" href="#delete-modal">DELETE</a>
+                                <a style="letter-spacing: 0.25vmax" class="waves-effect waves-light modal-trigger red-text" href="#delete-{{$c->id}}-modal">DELETE</a>
                             </div>
 
-                            <div id="delete-modal" class="modal">
+                            <div id="delete-{{$c->id}}-modal" class="modal">
                                 <div class="modal-content">
                                     <h4>Comment delete</h4>
                                     <p>Are you sure you want to delete this comment?</p>
@@ -126,5 +119,12 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
 
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.modal');
+        M.Modal.init(elems, {});
+    });
+</script>
 
 @endsection
