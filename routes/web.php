@@ -20,6 +20,7 @@ Route::controller(AuthController::class)->group(function () {
     Route::post("/login",  "authenticate")->name("authenticate");
     Route::post("/logout", "logout")->name("logout");
     Route::get("/register", "register")->name("register");
+    Route::post("/register", "store")->name("store.users");
 });
 
 Route::controller(ArticleController::class)->group(function () {

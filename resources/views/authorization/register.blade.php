@@ -6,7 +6,7 @@
 
 <div class="row" style="margin-bottom: 0">
     <div class="col s12 l6 offset-l3">
-        <form method="POST" action="{{ route("store.user") }}">
+        <form method="POST" action="{{ route("store.users") }}">
             <div class="card">
                 <div class="card-content">
                     <div class="card-title">
@@ -17,22 +17,22 @@
                         
                             @csrf
                             <div class="input-field col s12">
-                                <input id="first" type="text" class="validate" name="first">
-                                <label for="first">First name</label>
+                                <input id="first_name" type="text" class="validate" name="first_name" value="{{ old("first_name") }}">
+                                <label for="first_name">First name</label>
                             </div>
 
                             <div class="input-field col s12">
-                                <input id="last" type="text" class="validate" name="last">
-                                <label for="last">Last name</label>
+                                <input id="last_name" type="text" class="validate" name="last_name" value="{{ old("last_name") }}">
+                                <label for="last_name">Last name</label>
                             </div>
 
                             <div class="input-field col s12">
-                                <input id="login" type="text" class="validate" name="login">
+                                <input id="login" type="text" class="validate" name="login" value="{{ old("login") }}">
                                 <label for="login">Login</label>
                             </div>
 
                             <div class="input-field col s12">
-                                <input id="email" type="email" class="validate" name="email">
+                                <input id="email" type="email" class="validate" name="email" value="{{ old("email") }}">
                                 <label for="email">Email</label>
                             </div>
 
@@ -43,15 +43,7 @@
 
                             <div class="input-field col s12">
                                 <input id="password_confirmation" type="password" class="validate" name="password_confirmation">
-                                <label for="password_confirmation">Confirm password</label>
-                            </div>
-
-                            <div class="input-field col s12">
-                                <select name="role">
-                                    <option value="2" selected>User</option>
-                                    <option value="3">Journalist</option>
-                                </select>
-                                <label>Role</label>
+                                <label for="password_confirmation">Password confirmation</label>
                             </div>
 
                         </div>

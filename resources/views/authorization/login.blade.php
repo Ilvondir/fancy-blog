@@ -6,6 +6,15 @@
 
 <div class="row" style="margin-bottom: 0">
     <div class="col s12 l6 offset-l3">
+
+        @if (request()->boolean("registered"))
+
+            <div class="card center green-text" style="padding: 1.5vmax 0; font-size:140%">
+                Now you can login.
+            </div>
+
+        @endif
+
         <form method="POST" action="{{ route("authenticate") }}">
             <div class="card">
                 <div class="card-content">
