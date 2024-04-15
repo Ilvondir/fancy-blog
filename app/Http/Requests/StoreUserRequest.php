@@ -28,7 +28,8 @@ class StoreUserRequest extends FormRequest
             "last_name" => ["nullable", "min:2"],
             "login" => ["required", "unique:users,login"],
             "email" => ["required", "email", "unique:users,email"],
-            "password" => ["required", "confirmed", Password::min(8)->mixedCase()->numbers()]
+            "password" => ["required", "confirmed", Password::min(8)->mixedCase()->numbers()],
+            "role_id" => ["required", "integer"]
         ];
     }
 }

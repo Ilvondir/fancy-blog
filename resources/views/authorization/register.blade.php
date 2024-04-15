@@ -46,6 +46,18 @@
                                 <label for="password_confirmation">Password confirmation</label>
                             </div>
 
+                            
+                            <div class="input-field col s12" @if (!request()->boolean("admin")) style="display: none" @endif>
+                                <select name="role_id">
+                                    <optgroup label="Roles">
+                                        <option value="3" selected>User</option>
+                                        <option value="2">Journalist</option>
+                                    </optgroup>
+                                </select>
+                                <label>Role</label>
+                            </div>
+                            
+
                         </div>
 
                         @if ($errors->any())
