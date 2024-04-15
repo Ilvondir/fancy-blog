@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Article;
 use App\Models\Comment;
 use App\Models\Tag;
+use App\Policies\ArticlePolicy;
 use App\Policies\CommentPolicy;
 use App\Policies\TagPolicy;
 use Illuminate\Support\Facades\Gate;
@@ -26,5 +28,6 @@ class AppServiceProvider extends ServiceProvider
     {
         Gate::policy(Tag::class, TagPolicy::class);
         Gate::policy(Comment::class, CommentPolicy::class);
+        Gate::policy(Article::class, ArticlePolicy::class);
     }
 }

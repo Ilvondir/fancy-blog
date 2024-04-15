@@ -30,7 +30,7 @@
         <div class="col s12 m3 center black-text">
             <a href="{{ route("index.articles")."?".$queryString }}">
                 <div class="col s12">
-                    <div class="card" style="background-color: {{ $tags[$i]->color }}; font-size:110%; margin-bottom: 0">
+                    <div class="card" style="background-color: {{ $tags[$i]->color }}; font-size:110%; margin-bottom: 1vmax">
                         <div class="card-content black-text">
                             <p>
                                 {{ $tags[$i]->name }} ({{ count($tags[$i]->articles) }})

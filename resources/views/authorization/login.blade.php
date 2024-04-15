@@ -41,6 +41,12 @@
                     </p>
                 </div>
                 <div class="card-action">
+
+                    <div class="right" style='margin-top: .5vmax'>
+                        <a href="{{ route("register") }}" class="blue-text">
+                            Register
+                        </a>
+                    </div>
                     
                     <button type="submit" class="blue white-text waves-effect waves-light btn">
                         Login

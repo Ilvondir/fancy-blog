@@ -38,6 +38,24 @@
             <li class="collection-item">
                 <i class="fa-calendar-days fa-regular blue-text" style="margin-right: 0.5vmax; font-size: 125%"></i>{{ $article->published }}
             </li>
+
+            @can("update", $article)
+                <li class="collection-item">
+                    <a href="">
+                        <i class="fa-solid fa-pen-to-square blue-text" style="margin-right: 0.5vmax; font-size: 125%"></i>
+                        EdIt
+                    </a>
+                </li>
+            @endcan
+
+            @can("delete", $article)
+                <li class="collection-item red white-text">
+                    <a href="" class='white-text'>
+                        <i class="fa-solid fa-trash white-text" style="margin-right: 0.5vmax; font-size: 125%"></i>
+                        Delete
+                    </a>
+                </li>
+            @endcan
             
           </ul>
     </div>

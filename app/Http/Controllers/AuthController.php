@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUserRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -38,5 +39,15 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect()->back();
+    }
+
+    public function register() {
+        if (Auth::check()) return redirect()->route("home");
+        else 
+            return view("authorization.register");
+    }
+
+    public function store(StoreUserRequest $request) {
+        
     }
 }
