@@ -4,7 +4,7 @@
 
 @section("content")
 
-<div style="background-image: url({{ $article->image }}); height: 500px; background-position: center"></div>
+<div style="background-image: url({{ $article->image }}); height: 500px; background-position: center; background-size: cover"></div>
 
 
 <div class="row" style="padding: 0 3vmax">
@@ -50,11 +50,27 @@
 
             @can("delete", $article)
                 <li class="collection-item red white-text">
-                    <a href="" class='white-text'>
+                    <a href="#delete-article-modal" class='white-text modal-trigger'>
                         <i class="fa-solid fa-trash white-text" style="margin-right: 0.5vmax; font-size: 125%"></i>
                         Delete
                     </a>
                 </li>
+
+                <div id="delete-article-modal" class="modal left-align">
+                    <div class="modal-content">
+                        <h4>Article delete</h4>
+                        <p>Are you sure you want to delete article "<strong>{{ $article->title }}</strong>"?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <form method="POST" action="{{ route("destroy.articles", ["article" => $article->id]) }}">
+                            @csrf
+                            @method("DELETE")
+                            <button type="submit" class="red white-text waves-effect waves-light btn">
+                                <i class="fa-solid fa-trash" style="font-size:110%"></i> Delete
+                            </button>
+                        </form>
+                    </div>
+                </div>
             @endcan
             
           </ul>

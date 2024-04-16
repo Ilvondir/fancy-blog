@@ -16,8 +16,10 @@ class ArticleFactory extends Factory
      */
     public function definition(): array
     {
+
+        $sentence = fake()->sentence();
         return [
-            "title" => fake()->sentence(),
+            "title" => substr($sentence, 0, strlen($sentence) - 1),
             "content" => fake()->text(1000),
             "published" => fake()->date(),
             "image" => fake()->imageUrl(),

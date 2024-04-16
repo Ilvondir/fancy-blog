@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class ArticleController extends Controller
 {
@@ -75,6 +76,8 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
-        //
+        Gate::authorize("delete", $article);
+        $article->delete();
+        return redirect()->route("index.articles");
     }
 }
