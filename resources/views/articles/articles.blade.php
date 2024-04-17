@@ -22,12 +22,12 @@
 <div class="row" style="margin: 0">
     <div class="col s12">
     <div class="card horizontal black-text">
-        <div class="card-image" style="background-image: url({{ $img }}); width: 35%; background-position: center; background-size: cover">
+        <div class="card-image hide-on-med-and-down" style="background-image: url({{ $img }}); width: 35%; background-position: center; background-size: cover">
         </div>
         <div class="card-stacked">
             <div class="card-content">
                 <span class="card-title">{{ $a->title }}</span>
-                <p style="margin-bottom: 5px">
+                <p style="margin-bottom: 5px; line-height: 1.9rem">
                     @foreach ($a->tags as $t)
                         <span class="tag" style="background-color: {{ $t->color }}">{{ $t->name }}</span>
                     @endforeach

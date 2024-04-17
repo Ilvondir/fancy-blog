@@ -24,7 +24,8 @@ class StoreArticleRequest extends FormRequest
         return [
             "title" => ["required", "min:10"],
             "content" => ["required", "min:50"],
-            "image" => ["required", "image", "mimes:jpg,jpeg,png"]
+            "image" => ["required", "image", "mimes:jpg,jpeg,png"],
+            "tags" => ["array"]
         ];
     }
 }

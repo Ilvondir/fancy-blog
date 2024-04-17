@@ -50,7 +50,7 @@
                 <li class="collection-item">
                     <a href="">
                         <i class="fa-solid fa-pen-to-square blue-text" style="margin-right: 0.5vmax; font-size: 125%"></i>
-                        EdIt
+                        Edit
                     </a>
                 </li>
             @endcan

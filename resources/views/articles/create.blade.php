@@ -13,7 +13,6 @@
                     <div class="card-title">
                         Write article
                     </div>
-                    <p>
                         <div class='row' style="margin-bottom: 0">
                         
                             @csrf
@@ -39,6 +38,18 @@
                                 </div>
                             </div>
 
+                            <div class="input-field col s12">
+                                <select name="tags[]" placeholder="Select tags" multiple>
+                                    <optgroup label="Tags">
+                                        @foreach ($tags as $t)
+                                            <option value='{{ $t->id }}'>{{ $t->name }}</option>
+                                        @endforeach
+                                    </optgroup>
+                                </select>
+                                <label>Tags</label> 
+                            </div>
+
+
                         </div>
 
                         @if ($errors->any())
@@ -51,7 +62,6 @@
                             </div>
                         @endif
                         
-                    </p>
                 </div>
                 <div class="card-action">
                     
@@ -64,5 +74,12 @@
         </form>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    M.FormSelect.init(elems, options);
+});
+</script>
 
 @endsection

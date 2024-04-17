@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreArticleRequest;
 use App\Models\Article;
 use App\Models\Comment;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
@@ -40,7 +41,7 @@ class ArticleController extends Controller
     public function create()
     {
         Gate::authorize("create", Article::class);
-        return view("articles.create");
+        return view("articles.create", ["tags" => Tag::get()]);
     }
 
     /**
@@ -60,6 +61,8 @@ class ArticleController extends Controller
             "user_id" => Auth::user()->id,
             "published" => date("Y-m-d")
         ]);
+
+        $article->tags()->syncWithoutDetaching($request->validated("tags"));
 
         return redirect()->route("show.articles", ["article" => $article->id]);
     }
