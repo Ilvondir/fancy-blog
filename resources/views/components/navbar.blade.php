@@ -9,9 +9,17 @@
                 <i class="fa-solid fa-house" style="font-size: 120%; margin-right: 3px"></i> Home</a>
             </li>
 
-            <li class="tab @if ( str_contains(request()->path(), "articles") ) active @endif"><a href="{{ route("index.articles") }}" class="@if ( str_contains(request()->path(), "articles") ) active @endif">
+            <li class="tab @if ( request()->path() == "articles" ) active @endif"><a href="{{ route("index.articles") }}" class="@if ( request()->path() == "articles" ) active @endif">
                 <i class="fa-solid fa-newspaper" style="font-size: 120%; margin-right: 3px"></i> Articles</a>
             </li>
+
+            @can("create", App\Models\Article::class)
+
+                <li class="tab @if ( str_contains(request()->path(), "articles/create") ) active @endif"><a href="{{ route("create.articles") }}" class="@if ( str_contains(request()->path(), "articles/create") ) active @endif">
+                    <i class="fa-solid fa-pen-nib" style="font-size: 120%; margin-right: 3px"></i> Write article</a>
+                </li>
+
+            @endcan
 
             <li class="tab @if ( str_contains(request()->path(), "tags") ) active @endif"><a href="{{ route("index.tags") }}" class="@if ( str_contains(request()->path(), "tags") ) active @endif">
                 <i class="fa-solid fa-hashtag" style="font-size: 120%; margin-right: 3px"></i> Tags</a>

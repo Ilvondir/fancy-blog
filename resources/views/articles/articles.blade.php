@@ -10,11 +10,19 @@
 </p>
 
 @forelse ($articles as $a)
+@php
+
+    if (str_starts_with($a->image, "https")) $img = $a->image;
+    else {
+        $img = asset("storage/" . $a->image);
+    }
+
+@endphp
 <a href={{ route("show.articles", ["article" => $a->id]) }}>
 <div class="row" style="margin: 0">
     <div class="col s12">
     <div class="card horizontal black-text">
-        <div class="card-image" style="background-image: url({{ $a->image }}); width: 35%; background-position: center; background-size: cover">
+        <div class="card-image" style="background-image: url({{ $img }}); width: 35%; background-position: center; background-size: cover">
         </div>
         <div class="card-stacked">
             <div class="card-content">

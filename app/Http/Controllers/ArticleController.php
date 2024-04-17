@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreArticleRequest;
 use App\Models\Article;
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
 {
@@ -35,15 +38,28 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        Gate::authorize("create", Article::class);
+        return view("articles.create");
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreArticleRequest $request)
     {
-        //
+        $file = $request->file("image");
+        $filename = (Article::max("id") + 1). ".". $file->extension();
+        Storage::putFileAs("public/img", $file, $filename);
+        
+        $article = Article::create([
+            "title" => $request->validated("title"),
+            "content" => $request->validated("content"),
+            "image" => "img/" . $filename,
+            "user_id" => Auth::user()->id,
+            "published" => date("Y-m-d")
+        ]);
+
+        return redirect()->route("show.articles", ["article" => $article->id]);
     }
 
     /**

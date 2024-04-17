@@ -4,7 +4,14 @@
 
 @section("content")
 
-<div style="background-image: url({{ $article->image }}); height: 500px; background-position: center; background-size: cover"></div>
+@php
+    if (str_starts_with($article->image, "https")) $img = $article->image;
+    else {
+        $img = asset("storage/" . $article->image);
+    }
+@endphp
+
+<div style="background-image: url({{ $img }}); height: 500px; background-position: center; background-size: cover"></div>
 
 
 <div class="row" style="padding: 0 3vmax">

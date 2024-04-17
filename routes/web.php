@@ -25,6 +25,8 @@ Route::controller(AuthController::class)->group(function () {
 
 Route::controller(ArticleController::class)->group(function () {
     Route::get('/articles', 'index')->name("index.articles");
+    Route::get('/articles/create', 'create')->name("create.articles");
+    Route::post('/articles/create', 'store')->name("store.articles");
     Route::get('/articles/{article}', 'show')->name("show.articles");
     Route::delete('/articles/{article}', 'destroy')->name("destroy.articles");
 });
