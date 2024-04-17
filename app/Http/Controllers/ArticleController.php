@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ArticleController extends Controller
 {
@@ -17,7 +18,7 @@ class ArticleController extends Controller
      */
     public function index(Request $request)
     {
-        $articles = Article::orderBy("published", "DESC")->with(["user", "tags", "comments"])->get();
+        $articles = Article::orderBy("id", "DESC")->with(["user", "tags", "comments"])->get();
 
         if ($request->input("tag")) {
             $tag = $request->input("tag");
@@ -47,8 +48,9 @@ class ArticleController extends Controller
      */
     public function store(StoreArticleRequest $request)
     {
+        Gate::authorize("create", Article::class);
         $file = $request->file("image");
-        $filename = (Article::max("id") + 1). ".". $file->extension();
+        $filename = Str::random(25) . ".". $file->extension();
         Storage::putFileAs("public/img", $file, $filename);
         
         $article = Article::create([
@@ -93,6 +95,12 @@ class ArticleController extends Controller
     public function destroy(Article $article)
     {
         Gate::authorize("delete", $article);
+        $img = $article->image;
+
+        if (Storage::exists("public/" . $img)) {
+            Storage::delete("public/" . $img);
+        }
+
         $article->delete();
         return redirect()->route("index.articles");
     }
