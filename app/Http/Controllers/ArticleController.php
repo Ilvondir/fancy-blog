@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreArticleRequest;
+use App\Http\Requests\UpdateArticleRequest;
 use App\Models\Article;
 use App\Models\Comment;
 use App\Models\Tag;
@@ -81,15 +82,16 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        //
+        Gate::authorize("update", $article);
+        return view("articles.edit", ["article" => $article, "tags" => Tag::orderBy("name", "ASC")->get()]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Article $article)
+    public function update(UpdateArticleRequest $request, Article $article)
     {
-        //
+        Gate::authorize("update", $article);
     }
 
     /**

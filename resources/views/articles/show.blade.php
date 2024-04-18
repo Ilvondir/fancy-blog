@@ -46,7 +46,7 @@
 
             @can("update", $article)
                 <li class="collection-item">
-                    <a href="">
+                    <a href="{{ route("edit.articles", ["article" => $article->id]) }}">
                         <i class="fa-solid fa-pen-to-square blue-text" style="margin-right: 0.5vmax; font-size: 125%"></i>
                         Edit
                     </a>
