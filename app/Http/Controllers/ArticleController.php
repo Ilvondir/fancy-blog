@@ -27,12 +27,12 @@ class ArticleController extends Controller
 
             $filtered = [];
             foreach ($articles as $a) {
-                if ($a->tags->contains("name", $tag)) array_push($filtered, $a);
+                if ($a->tags->contains("name", $tag))
+                    array_push($filtered, $a);
             }
 
             return view("articles.articles", ["articles" => $filtered]);
-        }
-        else 
+        } else
             return view("articles.articles", ["articles" => $articles]);
     }
 
@@ -52,9 +52,9 @@ class ArticleController extends Controller
     {
         Gate::authorize("create", Article::class);
         $file = $request->file("image");
-        $filename = Str::random(25) . ".". $file->extension();
+        $filename = Str::random(25) . "." . $file->extension();
         Storage::putFileAs("public/img", $file, $filename);
-        
+
         $article = Article::create([
             "title" => $request->validated("title"),
             "content" => $request->validated("content"),
@@ -92,6 +92,20 @@ class ArticleController extends Controller
     public function update(UpdateArticleRequest $request, Article $article)
     {
         Gate::authorize("update", $article);
+        
+        if ($request->file("image")) {
+            Storage::putFileAs("public/", $request->file("image"), $article->image);
+        }
+
+        $article->update([
+            "title" => $request->validated("title"),
+            "content" => $request->validated("content"),
+        ]);
+
+        $article->tags()->detach();
+        $article->tags()->syncWithoutDetaching($request->validated("tags"));
+
+        return redirect()->route("show.articles", ["article" => $article->id]);
     }
 
     /**

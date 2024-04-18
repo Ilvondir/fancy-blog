@@ -1,6 +1,6 @@
 @extends("template")
 
-@section("title", "Edit "  . $article->title )
+@section("title", "Edit "  . $article->title)
 
 @section("content")
 
