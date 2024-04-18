@@ -27,7 +27,7 @@
         <div class="card-stacked">
             <div class="card-content">
                 <span class="card-title">{{ $a->title }}</span>
-                <p style="margin-bottom: 5px; line-height: 1.9rem">
+                <p style="margin-bottom: 5px; line-height: 1.9rem;">
                     @foreach ($a->tags as $t)
                         <span class="tag" style="background-color: {{ $t->color }}">{{ $t->name }}</span>
                     @endforeach

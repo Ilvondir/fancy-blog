@@ -41,7 +41,7 @@ class ArticleController extends Controller
     public function create()
     {
         Gate::authorize("create", Article::class);
-        return view("articles.create", ["tags" => Tag::get()]);
+        return view("articles.create", ["tags" => Tag::orderBy("name", "ASC")->get()]);
     }
 
     /**

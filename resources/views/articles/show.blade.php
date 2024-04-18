@@ -19,9 +19,7 @@
     <h2>{{ $article->title }}</h2>
     <div class="col s12 l9">
 
-        <p style="font-size: 110%">
-            {{ $article->content }}
-        </p>
+        <p style="font-size: 110%; white-space: pre-wrap">{{ $article->content }}</p>
 
     </div>
 
@@ -99,14 +97,25 @@
                         <div class="row right-align">
                             @csrf
                             <div class="input-field col s12">
-                                <textarea id="content" name="content" class="materialize-textarea" rows="5"></textarea>
+                                <textarea id="content" name="content" class="materialize-textarea" rows="5">@if ($errors->any()){{ old("content") }}@endif</textarea>
                                 <label for="content">Comment</label>
                             </div>
 
+                        
                             <button type="submit" class="blue white-text waves-effect waves-light btn">
                                 Add
                             </button>
                         </div>
+
+                        @if ($errors->any())
+                            <div>
+                                <ul class="collection red-text">
+                                    @foreach ($errors->all() as $error)
+                                        <li class="collection-item">{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         
                     </form>
 
