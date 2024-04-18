@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Middleware\RedirectIf403;
+use App\Http\Middleware\RedirectIf404;
+use App\Http\Middleware\ShareArticlesToFooter;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -11,7 +14,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        $middleware->append(ShareArticlesToFooter::class);
+        $middleware->append(RedirectIf403::class);
+        $middleware->append(RedirectIf404::class);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
