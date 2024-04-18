@@ -13,6 +13,7 @@ For guests, the application allows browsing blog articles and registering. Logge
 - PHP 8.3.6
 - Laravel 11.4.0
 - Materialize 1.0.0
+- Font Awesome 6.5.2
 
 ## Requirements
 
