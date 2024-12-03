@@ -28,8 +28,8 @@ class DatabaseSeeder extends Seeder
             $rand2 = $rand1;
             while ($rand2 == $rand1) $rand2 = random_int(1, Tag::count());
             
-            DB::insert("INSERT INTO articles_tags VALUES (null, ?, ?);", [$i, $rand1]);
-            DB::insert("INSERT INTO articles_tags VALUES (null, ?, ?);", [$i, $rand2]);
+            DB::insert("INSERT INTO articles_tags (article_id, tag_id)  VALUES (?, ?);", [$i, $rand1]);
+            DB::insert("INSERT INTO articles_tags (article_id, tag_id) VALUES (?, ?);", [$i, $rand2]);
         }
         
     }
